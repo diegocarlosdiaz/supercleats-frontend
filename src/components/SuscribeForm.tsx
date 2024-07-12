@@ -1,30 +1,28 @@
-import { Grid, TextField, Typography } from "@mui/material";
-import { alpha, styled } from '@mui/material/styles';
+import { Box, Grid, TextField, Typography } from "@mui/material";
+import { alpha, styled } from "@mui/material/styles";
 import React from "react";
 import SuscribeButton from "./buttons/SuscribeButton";
-
 const BlackTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: 'black',
+  "& label.Mui-focused": {
+    color: "black",
   },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'black',
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "black",
   },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'black',
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "black",
     },
-    '&:hover fieldset': {
-      borderColor: 'black',
+    "&:hover fieldset": {
+      borderColor: "black",
     },
-    '&.Mui-focused fieldset': {
-      borderColor: 'black',
+    "&.Mui-focused fieldset": {
+      borderColor: "black",
     },
   },
 });
 
 export default function SuscribeForm() {
-  
   return (
     <Grid
       container
@@ -44,21 +42,29 @@ export default function SuscribeForm() {
       </p>
 
       <Grid pb={3}>
-        <BlackTextField
-          
-          sx={{ paddingRight: 2 }}
-          id="standard-basic"
-          label="Email"
-          variant="standard"
-        />
-        <BlackTextField
-          sx={{ paddingLeft: 2 }}
-          id="standard-basic"
-          label="Telefono"
-          variant="standard"
-        />
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off" >
+          <BlackTextField
+            sx={{ paddingRight: 2 }}
+            id="standard-email"
+            label="Email"
+            variant="standard"
+          />
+          <BlackTextField
+            sx={{ paddingLeft: 2 }}
+            id="standard-phone"
+            label="Telefono"
+            variant="standard"
+          />
+        </Box>
       </Grid>
-      <SuscribeButton text='Suscribirme'></SuscribeButton>
+      <SuscribeButton text="Suscribirme"></SuscribeButton>
+      
     </Grid>
   );
 }

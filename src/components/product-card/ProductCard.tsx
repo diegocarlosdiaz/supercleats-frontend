@@ -34,8 +34,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({title, image, character
         <Image
           src={image}
           alt={"Nike"}
-          width={300}
-          height={300}
+          width={500}
+          height={500}
         />
       </Card.Section>
       <Text size="xl" fw={400}>

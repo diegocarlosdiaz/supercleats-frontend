@@ -4,8 +4,14 @@ import "./globals.scss";
 import ResponsiveAppBar from "@/components/AppBar";
 import AppFooter from "@/components/AppFooter";
 import MuiTheme from "@/styles/MuiTheme";
+import { Provider } from "@/redux/providers";
+import { MantineProvider, createTheme } from "@mantine/core";
+import { ThemeProvider } from "@mui/material/styles";
 
 const inter = Inter({ subsets: ["latin"] });
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,11 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <MuiTheme>
-          <ResponsiveAppBar></ResponsiveAppBar>
-          {children}
-          <AppFooter></AppFooter>
-        </MuiTheme>
+        <Provider>
+          <MantineProvider theme={theme}>
+            <MuiTheme>
+              <ResponsiveAppBar></ResponsiveAppBar>
+              {children}
+              <AppFooter></AppFooter>
+            </MuiTheme>
+          </MantineProvider>
+        </Provider>
       </body>
     </html>
   );

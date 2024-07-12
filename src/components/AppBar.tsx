@@ -22,6 +22,8 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { styled, alpha } from "@mui/material/styles";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import HeaderBanner from "./header-banner/HeaderBanner";
+import { useRouter } from "next/router";
+import CartBuyButton from "./buttons/CartBuyButton";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -64,6 +66,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const pages = ["Women", "Men", "Kids", "Sales & Clereance", "Brands"];
+
+const sections = [
+  {
+    name: "Women",
+    href: "/women",
+  },
+  {
+    name: "Men",
+    href: "/men",
+  },
+  {
+    name: "Kids",
+    href: "/kid",
+  },
+  {
+    name: "Sales and Clereance",
+    href: "/sale",
+  },
+  {
+    name: "Brands",
+    href: "/brand",
+  },
+];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
@@ -89,6 +115,11 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  /* const router = useRouter();
+  const handleRedirectSections = (url:string) => {
+    router.push(`http://localhost:3000${url}`)
+  } */
+
   return (
     <>
       <HeaderBanner></HeaderBanner>
@@ -97,12 +128,14 @@ function ResponsiveAppBar() {
           <Grid px={4} justifyContent="space-between">
             <Toolbar disableGutters>
               <Grid sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
-                <Image
-                  src="/super-cleats-white.png" // Ruta relativa a la carpeta public
-                  alt="logo"
-                  width={200} // Ancho deseado
-                  height={300} // Altura deseada
-                />
+                <a href="http://localhost:3000">
+                  <Image
+                    src="/super-cleats-white.png" // Ruta relativa a la carpeta public
+                    alt="logo"
+                    width={200} // Ancho deseado
+                    height={300} // Altura deseada
+                  />
+                </a>
               </Grid>
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                 <IconButton
@@ -133,9 +166,9 @@ function ResponsiveAppBar() {
                     display: { xs: "block", md: "none" },
                   }}
                 >
-                  {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
+                  {sections.map((page) => (
+                    <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page.name}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -168,7 +201,7 @@ function ResponsiveAppBar() {
                     </Search>
                   </Grid>
                   <Grid item>
-                    <Tooltip title="Open settings">
+                    <Tooltip title="Proximamente disponible">
                       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <PersonOutlineIcon
                           sx={{ color: "white" }}
@@ -178,7 +211,7 @@ function ResponsiveAppBar() {
                     </Tooltip>
                   </Grid>
                   <Grid item>
-                    <Tooltip title="Favourite products">
+                    <Tooltip title="Proximamente disponible">
                       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <FavoriteBorderOutlinedIcon
                           sx={{ color: "white" }}
@@ -188,17 +221,10 @@ function ResponsiveAppBar() {
                     </Tooltip>
                   </Grid>
                   <Grid item>
-                    <Tooltip title="Shopping Cart">
-                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <ShoppingCartOutlinedIcon
-                          sx={{ color: "white" }}
-                          fontSize="medium"
-                        />
-                      </IconButton>
-                    </Tooltip>
+                    <CartBuyButton />
                   </Grid>
                 </Grid>
-                <Menu
+                {/* <Menu
                   sx={{ mt: "45px" }}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
@@ -219,7 +245,7 @@ function ResponsiveAppBar() {
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
                   ))}
-                </Menu>
+                </Menu> */}
               </Box>
             </Toolbar>
           </Grid>
@@ -231,15 +257,15 @@ function ResponsiveAppBar() {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {pages.map((page) => (
-              <Grid key={page}>
+            {sections.map((page) => (
+              <Grid key={page.name}>
                 <a
-                  href="#_"
+                  href={page.href}
                   className="mx-2 px-3 py-2.5 relative rounded group overflow-hidden font-medium text-white inline-block"
                 >
                   <span className="absolute rounded-t-xl my-2 mb-1 top-0 left-0 flex w-full h-0 transition-all duration-200 ease-out transform translate-y-0 bg-gray-300  group-hover:h-full opacity-90"></span>
                   <span className="relative font-bold text-sm group-hover:text-black">
-                    {page}
+                    {page.name}
                   </span>
                 </a>
               </Grid>

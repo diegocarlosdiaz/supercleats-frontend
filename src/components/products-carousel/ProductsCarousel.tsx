@@ -9,6 +9,9 @@ import {
   Keyboard,
   Autoplay,
 } from "swiper/modules";
+import { getBotines } from "@/redux/features/botinesSlice";
+import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 interface BotinesResponse {
   nombre: string;
@@ -24,7 +27,8 @@ interface BotinesResponse {
 }
 
 function ProductsCarousel() {
-  const [botines, setBotines] = useState<BotinesResponse[]>([]);
+  const dispatch = useAppDispatch();
+  const botines = useAppSelector((state) => state.botinesReducer.entities);
   const swiperStyles: Record<string, string> = {
     "--swiper-navigation-size": "25px",
     "--swiper-navigation-top-offset": "50%",
@@ -33,19 +37,9 @@ function ProductsCarousel() {
     "--swiper-pagination-color": "black",
   };
 
-  const getBotines = async () => {
-    try {
-      const response = await axios.get<BotinesResponse[]>(
-        "http://localhost:8080/api/v1/botines"
-      );
-      setBotines(response.data);
-    } catch (error) {
-      console.error;
-    }
-  };
 
   useEffect(() => {
-    getBotines();
+    dispatch(getBotines({}))
   }, []);
 
   return (
@@ -69,7 +63,7 @@ function ProductsCarousel() {
         modules={[Navigation, Pagination]}
         className="mySwiper py-4"
       >
-        {botines.map((item) => (
+        {botines.map((item: BotinesResponse) => (
           <SwiperSlide className="">
             <div className="flex flex-row p-20 items-end content-start">
               <div className="px-6">

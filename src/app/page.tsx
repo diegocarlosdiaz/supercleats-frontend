@@ -2,7 +2,7 @@
 import { ProductCard } from "@/components/product-card/ProductCard";
 import BrandBanner from "@/components/brands-banner/BrandBanner";
 import FirstBanner from "@/components/home/FirstBanner";
-import { ThemeProvider } from "@mui/material/styles";
+
 import Image from "next/image";
 import "@mantine/core/styles.css";
 
@@ -17,13 +17,11 @@ import SuscribeForm from "@/components/SuscribeForm";
 import Imagescarousel from "@/components/images-carousel/Imagescarousel";
 import GenderSection from "@/components/gender-section/GenderSection";
 
-const theme = createTheme({
-  /** Put your mantine theme override here */
-});
+
 
 export default function Home({ Component, pageProps }: AppProps) {
   return (
-    <MantineProvider theme={theme}>
+    
       <main className="flex min-h-screen flex-col items-center justify-between">
         <>
           <FirstBanner />
@@ -50,6 +48,6 @@ export default function Home({ Component, pageProps }: AppProps) {
           <SuscribeForm/>
         </>
       </main>
-    </MantineProvider>
+    
   );
 }

@@ -36,7 +36,6 @@ export default function () {
     // Limpia el intervalo cuando el componente se desmonta o cuando item cambia
     return () => clearInterval(interval);
   }, [item, data, isOpen]);
-  console.log(isOpen);
   const handleExpandBanner = () => {
     setIsOpen(true);
   };
