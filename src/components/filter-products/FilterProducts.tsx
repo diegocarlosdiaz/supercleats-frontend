@@ -85,7 +85,6 @@ export default function FilterProducts({
   // Observando los valores del formulario
   const watchedValues = watch();
   const [queryParams, setQueryParams] = useState('');
-  const queryParamsProof = mapToQueryParams(watchedValues)
   useEffect(() => {
     setQueryParams(mapToQueryParams(watchedValues))
   }, [watchedValues]);

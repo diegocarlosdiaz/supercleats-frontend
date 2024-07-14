@@ -29,9 +29,11 @@ export default function RootLayout({
         <Provider>
           <MantineProvider theme={theme}>
             <MuiTheme>
-              <ResponsiveAppBar></ResponsiveAppBar>
-              {children}
-              <AppFooter></AppFooter>
+              <div className="flex flex-col min-h-screen">
+                <ResponsiveAppBar></ResponsiveAppBar>
+                {children}
+                <AppFooter></AppFooter>
+              </div>
             </MuiTheme>
           </MantineProvider>
         </Provider>

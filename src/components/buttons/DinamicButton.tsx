@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function DynamicSubmit({ text, type }: { text: string, type: string }) {
+export default function DinamicButton({ text, type }: { text: string, type: string }) {
   return (
     <div className="relative inline-block text-lg group ml-5">
       <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">

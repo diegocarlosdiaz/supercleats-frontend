@@ -78,11 +78,11 @@ const sections = [
   },
   {
     name: "Kids",
-    href: "/kid",
+    href: "/kids",
   },
   {
     name: "Sales and Clereance",
-    href: "/sale",
+    href: "/sales-clereance",
   },
   {
     name: "Brands",

@@ -41,7 +41,7 @@ export default function Home({ Component, pageProps }: AppProps) {
               <p className="text-3xl font-extrabold">
                 PUEDES REGISTRARTE CON UN SOLO CLICK
               </p>
-              <DinamicButton text='REGISTRATE'/>
+              <DinamicButton type="submit" text='REGISTRATE'/>
             </div>
           </Stack>
           <ProductsCarousel/>
